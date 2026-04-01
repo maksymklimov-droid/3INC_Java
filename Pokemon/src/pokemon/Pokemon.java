@@ -45,35 +45,38 @@ public class Pokemon {
         return codice.toUpperCase();
     }
 
-    public String attacca(Pokemon other) {
-        if (this.livello > other.livello) {
-            return this.nome; 
+    public String attacca(Pokemon avversario) {
+        String attaco;
+        if (this.livello > avversario.livello) {
+            attaco = nome; 
         } else {
-            return other.nome; 
+            attaco = avversario.nome; 
         }
+        return attaco;
     }
 
-    public void aggiungiMossa(String nomeMossa, int dannoMossa) {
+    public boolean aggiungiMossa(String nomeMossa, int dannoMossa) {
+        boolean prova=false;
         if (nMosse < 4) {
             mosse[nMosse] = nomeMossa;
             danniMosse[nMosse] = dannoMossa; 
             nMosse++;
-        } else {
-            System.out.println("Il Pokémon ha già 4 mosse!");
+            prova=true;
         }
+        return prova;
     }
 
     public int potenzaAttacco(int indiceMossa) {
+        int npotenza=0;
         if (indiceMossa >= 0 && indiceMossa < nMosse) {
-            return livello + danniMosse[indiceMossa];
-        } else {
-            System.out.println("Indice mossa non valido!");
-            return 0; 
+            npotenza = livello + danniMosse[indiceMossa];
         }
+        return npotenza;
     }
 
     public int calcolaPuntiPartita(int potenza) {
-        return potenza * 2;
+        int potenzaNuovo = potenza * 2;
+        return potenzaNuovo;
     }
 
     public void stampaMosse() {
@@ -96,7 +99,7 @@ public class Pokemon {
     public String stampaStorico() {
         String storico = "";
         for (int i = 0; i < nPartite; i++) {
-            storico += "Partita " + i + " -> " + puntiPartite[i] + "\n";
+            storico += "Partita " + i + " - " + puntiPartite[i] + "\n";
         }
         return storico;
     }
@@ -141,27 +144,25 @@ public class Pokemon {
                "Partite vinte: " + partiteVinte();
     }
     
-public void combatti(Pokemon avversario, int mossa1, int mossa2) {
+public String combatti(Pokemon avversario, int mossa1, int mossa2) {
     
-    int miaPotenza = this.potenzaAttacco(mossa1);
+    int miaPotenza = potenzaAttacco(mossa1);
     int suaPotenza = avversario.potenzaAttacco(mossa2);
-
-    int mieiPunti = this.calcolaPuntiPartita(miaPotenza);
+    int mieiPunti = calcolaPuntiPartita(miaPotenza);
     int suoiPunti = avversario.calcolaPuntiPartita(suaPotenza);
-
+    String msg="Pareggio";
+    
     if (miaPotenza > suaPotenza) {
         mieiPunti += 20;
-        System.out.println(this.nome + " vince il round!");
+        msg = nome + " vince il round!";
     } else if (suaPotenza > miaPotenza) {
         suoiPunti += 20;
-        System.out.println(avversario.nome + " vince il round!");
-    } else {
-        System.out.println("Pareggio!");
+        msg = avversario.nome + " vince il round!";
     }
 
-    this.registraPartita(mieiPunti);
+    registraPartita(mieiPunti);
     avversario.registraPartita(suoiPunti);
-        
+    return msg;
     }
 }
 
