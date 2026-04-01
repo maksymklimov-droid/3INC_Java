@@ -57,28 +57,21 @@ public class Main {
         System.out.println("\nAnalisi riassuntiva:");
         System.out.println(p1.analisiPokemon());
         
-        System.out.println("\nTEST PARTE 5: Il Grande Combattimento");
+        System.out.println("\nTEST PARTE 5");
         p2.aggiungiMossa("Braciere", 15);
         p2.aggiungiMossa("Graffio", 10);
+        System.out.println(p1.combatti(p2, 1, 1));
 
         System.out.println("Situazione pre-combattimento:");
         System.out.println("Media punti Pikachu: " + p1.mediaPunti());
         System.out.println("Media punti Charmander: " + p2.mediaPunti());
 
-        System.out.println("\nInizia lo scontro!");
         p1.combatti(p2, 1, 0); 
 
-        System.out.println("\nSituazione post-combattimento:");
+        
         System.out.println("Nuovo storico Pikachu:\n" + p1.stampaStorico());
         System.out.println("Nuovo storico Charmander:\n" + p2.stampaStorico());
 
-        System.out.println("\nTEST EXTRA: Potenza e Punti isolati");
-        int potPikachu = p1.potenzaAttacco(3); 
-        int puntiTeorici = p1.calcolaPuntiPartita(potPikachu); 
-        
-        System.out.println("Test manuale Pikachu - Mossa 'Codacciaio':");
-        System.out.println("Potenza calcolata: " + potPikachu + " (Aspettato: 32)");
-        System.out.println("Punti calcolati: " + puntiTeorici + " (Aspettato: 64)");
     }
     
 }
