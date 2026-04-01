@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("TEST PARTE 1 & 2: Creazione e Attacco");
         Pokemon p1 = new Pokemon("Pikachu", "Elettro", 12, 100);
-        Pokemon p2 = new Pokemon("Charmander", "Fuoco", 10, 90);
+        Pokemon p2 = new Pokemon("Charmander", "Fuoco", 12, 90);
         
         System.out.println("Risultato attacco p1 vs p2: " + p1.attacca(p2)); 
         
@@ -58,17 +58,17 @@ public class Main {
         System.out.println(p1.analisiPokemon());
         
         System.out.println("\nTEST PARTE 5");
+
+
         p2.aggiungiMossa("Braciere", 15);
         p2.aggiungiMossa("Graffio", 10);
-        System.out.println(p1.combatti(p2, 1, 1));
 
         System.out.println("Situazione pre-combattimento:");
         System.out.println("Media punti Pikachu: " + p1.mediaPunti());
         System.out.println("Media punti Charmander: " + p2.mediaPunti());
-
-        p1.combatti(p2, 1, 0); 
-
         
+        System.out.println(p1.combatti(p2, 1, 0));
+
         System.out.println("Nuovo storico Pikachu:\n" + p1.stampaStorico());
         System.out.println("Nuovo storico Charmander:\n" + p2.stampaStorico());
 
