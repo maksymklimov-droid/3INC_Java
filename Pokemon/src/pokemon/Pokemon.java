@@ -6,7 +6,7 @@ package pokemon;
 
 /**
  *
- * @author maksym.klimov
+ * @author maksym.klimov asdasdasdasdasdasd
  */
 public class Pokemon {
     private String nome;
